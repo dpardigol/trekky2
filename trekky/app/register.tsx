@@ -1,57 +1,77 @@
-import { Button, StyleSheet, TextInput } from "react-native";
+import { SafeAreaView, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { TextInput, Button, Text } from "react-native-paper";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
-import { Text, View } from "@/components/Themed";
-import { useState } from "react";
 import { router } from "expo-router";
+import { useState } from "react";
 import React from "react";
 
 export default function RegisterScreen() {
+  const { top } = useSafeAreaInsets();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const auth = getAuth();
 
-  const handleRegister = () => {
-    createUserWithEmailAndPassword(getAuth(), email, password)
-      .then((user) => {
-        if (user) router.replace("/(tabs)");
+  const registerUser = async () => {
+    if (!email && !password)
+      return alert("Please enter an email and password.");
+    if (!email) return alert("Please enter an email.");
+    if (!password) return alert("Please enter a password.");
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        router.replace("/(app)/(tabs)/");
       })
-      .catch((err) => {
-        alert(err?.message);
+      .catch((error) => {
+        const errorMessage = error.message;
+        alert(errorMessage);
       });
   };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Register Screen</Text>
-      <TextInput
-        style={{ backgroundColor: "white", width: "80%", padding: 10 }}
-        placeholder="Email"
-        keyboardType="email-address"
-        onChangeText={(text) => setEmail(text)}
-      />
-      <TextInput
-        style={{ backgroundColor: "white", width: "80%", padding: 10 }}
-        placeholder="Password"
-        secureTextEntry
-        onChangeText={(text) => setPassword(text)}
-      />
-      <Button title={"Register"} onPress={handleRegister} />
-    </View>
+    <SafeAreaView
+      style={{ flex: 1, paddingTop: top, justifyContent: "center" }}
+    >
+      <Text
+        style={{ textAlign: "center", fontWeight: "bold", paddingBottom: 20 }}
+        variant="titleLarge"
+      >
+        Create an Account
+      </Text>
+
+      <View style={{ marginHorizontal: 10 }}>
+        <TextInput
+          style={{ marginVertical: 5 }}
+          mode="outlined"
+          label={"Email"}
+          autoComplete="email"
+          placeholder="Email"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          onChangeText={(text: string) => {
+            setEmail(text);
+          }}
+        />
+        <TextInput
+          style={{ marginVertical: 5 }}
+          mode="outlined"
+          autoComplete="password"
+          label={"Password"}
+          placeholder="Password"
+          secureTextEntry
+          textContentType="password"
+          onChangeText={(text: string) => {
+            setPassword(text);
+          }}
+        />
+        <Button
+          mode="elevated"
+          style={{ marginVertical: 40 }}
+          onPress={registerUser}
+        >
+          Register
+        </Button>
+      </View>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});

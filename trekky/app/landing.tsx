@@ -1,31 +1,46 @@
-import { Button, StyleSheet } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import { router } from "expo-router";
-
-import { Text, View } from "@/components/Themed";
+import { Button, Text } from "react-native-paper";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function LandingScreen() {
+  const { top } = useSafeAreaInsets();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Landing Screen</Text>
-      <Button title={"Login"} onPress={() => router.push("/login")} />
-      <Button title={"Register"} onPress={() => router.push("/register")} />
-    </View>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        justifyContent: "space-between",
+        paddingHorizontal: 20,
+      }}
+    >
+      <Text
+        style={{
+          textAlign: "center",
+          fontWeight: "bold",
+          paddingTop: 50 + top,
+        }}
+        variant="titleLarge"
+      >
+        React Native Firebase Chat
+      </Text>
+
+      <View style={{ paddingBottom: 50 }}>
+        <Button
+          style={{ marginBottom: 10 }}
+          mode="elevated"
+          onPress={() => router.push("/login")}
+        >
+          Sign In
+        </Button>
+        <Button
+          style={{ marginBottom: 10 }}
+          mode="contained"
+          onPress={() => router.push("/register")}
+        >
+          Create Account
+        </Button>
+      </View>
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
