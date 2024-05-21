@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { getAuth, signOut } from "firebase/auth";
 import { Button, Text } from "react-native-paper";
+import React from "react";
 
 export default function SettingsScreen() {
   const auth = getAuth();

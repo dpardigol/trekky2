@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 import { Text, Button } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import { getAuth } from "firebase/auth";
+import React from "react";
 
 export default function HomeScreen() {
   const db = getFirestore();
