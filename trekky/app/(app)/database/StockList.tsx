@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
 import { stocks } from './stocks';
 
 const StockList = () => {
@@ -9,10 +9,12 @@ const StockList = () => {
       keyExtractor={(item) => item.ticker}
       renderItem={({ item }) => (
         <View style={styles.item}>
+          {/* Dynamically resolve image source based on item's imageUrl */}
+          <Image style={styles.image} source={item.imageUrl} />
           <Text style={[styles.text, styles.ticker]}>{item.ticker}</Text>
           <Text style={styles.text}>{item.companyName}</Text>
           <Text style={styles.text}>Price: ${item.price.toFixed(2)}</Text>
-          <Text style={styles.text}>Change: {item.priceChangePercentage}% (${item.priceChange.toFixed(2)})</Text>
+          <Text style={styles.text}>{item.city}</Text>
         </View>
       )}
     />
@@ -26,12 +28,16 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
   },
   text: {
-    color: 'white', // Set text color to white
+    color: 'white',
   },
   ticker: {
     fontWeight: 'bold',
   },
+  image: {
+    width: 50,
+    height: 50,
+    marginBottom: 10,
+  },
 });
 
 export default StockList;
-

@@ -1,25 +1,39 @@
 export const stocks = [
     {
-      ticker: "TENTE 1 PLACE TREKKING",
-      companyName: "Apple Inc.",
-      price: 5.5,
-      priceChangePercentage: 1.5381,
-      priceChange: 2.9014,
+      ticker: "TENTE TREKING 1 PLACE - MODELE BASE",
+      companyName: "DECATHLON FRANCE",
+      city: "COURBEVOIE",
+      price: 10,
+      imageUrl: require("../../../assets/images/tente.png")
     },
     {
-      ticker: "AMZN",
-      companyName: "Amazon.com, Inc.",
-      price: 155.295,
-      priceChangePercentage: 1.1694,
-      priceChange: 1.795,
+        ticker: "TENTE TREKING 1 PLACE - MODELE EXPERT",
+        companyName: "DECATHLON FRANCE",
+        city: "NEUILLY",
+        price: 20,
+        imageUrl: require("../../../assets/images/tente.png")
     },
     {
-        ticker: "GOOGLE",
-        companyName: "Amazon.com, Inc.",
-        price: 155.295,
-        priceChangePercentage: 1.1694,
-        priceChange: 1.795,
-      },
+        ticker: "TENTE TREKING 2 PLACE - MODELE BASE",
+        companyName: "DECATHLON FRANCE",
+        city: "NEUILLY",
+        price: 20,
+        imageUrl: require("../../../assets/images/tente.png")
+    },
+    {
+        ticker: "TENTE TREKING 3 PLACE - MODELE EXPERT",
+        companyName: "DECATHLON FRANCE",
+        city: "AMIENS",
+        price: 20,
+        imageUrl: require("../../../assets/images/tente.png")
+    },
+    {
+        ticker: "TENTE TREKING 4 PLACE - MODELE SENIOR",
+        companyName: "DECATHLON FRANCE",
+        city: "NEUILLY",
+        price: 20,
+        imageUrl: require("../../../assets/images/tente.png")
+    },
   ];
   
   
