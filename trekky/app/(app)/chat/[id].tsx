@@ -22,6 +22,7 @@ import {
   where,
 } from "firebase/firestore";
 import { FontAwesome } from "@expo/vector-icons";
+import React from "react";
 
 export default function ChatMessageScreen() {
   const [messages, setMessages] = useState<IMessage[]>([]);
