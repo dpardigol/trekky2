@@ -46,7 +46,7 @@ export default function HomeScreen() {
     return () => unsubscribe();
   }, []);
 
-  const createChat = () => router.push("/chat/search");
+  const createChat = () => router.push("/(app)/chat/search");
 
   return (
     <SafeAreaView style={{ flex: 1, paddingTop: top }}>
@@ -80,7 +80,7 @@ export default function HomeScreen() {
                 <Pressable
                   onPress={() =>
                     router.navigate({
-                      pathname: "/chat/[id]",
+                      pathname: "/(app)/chat/[id]",
                       params: {
                         id: oppositeUser._id,
                         email: oppositeUser.email,

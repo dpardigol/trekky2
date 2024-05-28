@@ -131,7 +131,7 @@ export default function SearchScreen() {
                     }}
                     onPress={() =>
                       router.navigate({
-                        pathname: "/chat/[id]",
+                        pathname: "/(app)/chat/[id]",
                         params: {
                           id: item._id,
                           email: item.email,

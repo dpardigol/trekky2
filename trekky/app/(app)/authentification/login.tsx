@@ -4,6 +4,7 @@ import { TextInput, Button, Text } from "react-native-paper";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { router } from "expo-router";
 import { useState } from "react";
+import React from "react";
 
 export default function LoginScreen() {
   const { top } = useSafeAreaInsets();

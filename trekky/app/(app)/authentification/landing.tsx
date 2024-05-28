@@ -2,6 +2,7 @@ import { SafeAreaView, View } from "react-native";
 import { router } from "expo-router";
 import { Button, Text } from "react-native-paper";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import React from "react";
 
 export default function LandingScreen() {
   const { top } = useSafeAreaInsets();
@@ -29,14 +30,14 @@ export default function LandingScreen() {
         <Button
           style={{ marginBottom: 10 }}
           mode="elevated"
-          onPress={() => router.push("/login")}
+          onPress={() => router.push("/(app)/authentification/login")}
         >
           Sign In
         </Button>
         <Button
           style={{ marginBottom: 10 }}
           mode="contained"
-          onPress={() => router.push("/register")}
+          onPress={() => router.push("/(app)/authentification/register")}
         >
           Create Account
         </Button>

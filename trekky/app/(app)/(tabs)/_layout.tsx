@@ -35,7 +35,7 @@ export default function TabLayout() {
         { merge: true }
       );
     } else {
-      router.replace("/landing");
+      router.replace("/(app)/authentification/landing");
     }
   });
 
